@@ -11,12 +11,12 @@ CONDAVENV="$SCRIPT_DIR/condavenv"
 
 
 
-echo "Check for update environment $CONDAVENV\0" # виртуальное окружение над основным интерпретатором
+echo "Check for update environment $CONDAVENV" # виртуальное окружение над основным интерпретатором
 #
-if [ ! -d $CONDAVENV ]; then
-    conda create -y python=3.7 pip --prefix $CONDAVENV; fi
-if ! echo $PATH | grep --silent ^$CONDAVENV/bin; then
-    conda activate --stack $CONDAVENV; fi
+if [ ! -d "$CONDAVENV" ]; then
+    conda create -y python=3.7 pip --prefix "$CONDAVENV"; fi
+if ! echo $PATH | grep --silent ^"$CONDAVENV/bin"; then
+    conda activate --stack "$CONDAVENV"; fi
 pip install jupyter numpy pandas matplotlib seaborn jupyterlab ipykernel jupyter-lsp jupyterlab-lsp python-language-server jedi==0.17.2;
 ipython kernel install --name "ds-club-kernel" --user;
-jupyter lab
+jupyter lab "$SCRIPT_DIR/linear-regression.ipynb"
