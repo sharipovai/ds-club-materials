@@ -19,8 +19,8 @@ echo "Check for update environment $INSTALL_PATH" # основной интер�
 if which python | grep --silent "$MINICONDA\0"; then
     echo "good python version :)"
 else
-    if [ ! -f $LOAD_SCRIPT ]; then
-        curl -Lo $LOAD_SCRIPT $DL_LINK; fi # скачиваем скрипт загрузки миниконды
+    if [ ! -f "$LOAD_SCRIPT" ]; then
+        curl -Lo "$LOAD_SCRIPT" "$DL_LINK"; fi # скачиваем скрипт загрузки миниконды
     echo "Script is uploaded"
     if ! echo $PATH | grep --silent $MINICONDA; then
         export PATH=$MINICONDA:$PATH; fi
