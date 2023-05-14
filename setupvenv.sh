@@ -17,6 +17,7 @@ if [ ! -d "$CONDAVENV" ]; then
     conda create -y python=3.7 pip --prefix "$CONDAVENV"; fi
 if ! echo $PATH | grep --silent ^"$CONDAVENV/bin"; then
     conda activate --stack "$CONDAVENV"; fi
+pip install --upgrade pip
 pip install jupyter numpy pandas matplotlib seaborn jupyterlab ipykernel jupyter-lsp jupyterlab-lsp python-language-server jedi==0.17.2 plotly;
 jupyter labextension install jupyterlab-plotly;
 jupyter labextension install @jupyter-widgets/jupyterlab-manager plotlywidget;
